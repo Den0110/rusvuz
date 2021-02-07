@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Links -->
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+
+    <!-- Scripts -->
+	<script src="{{ url_for('static', filename='js/jquery-1.11.3.min.js') }}"></script>
+</head>
+<body>
+    <button id="but1">Кнопка 1</button>
+    <button id="but2">Кнопка 2</button>
+    <button id="but3">Кнопка 3</button>
+    <button id="but4">Кнопка 4</button>
+    <script>
+        $(document).ready(function(){
+            $('#but1').click(function(){
+                $('#but1').text("работает");
+                $.ajax({
+                    url: "/university",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        "id": 1,
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    }
+                });
+            });
+            $('#but2').click(function(){
+                $('#but2').text("работает");
+                $.ajax({
+                    url: "/universities",
+                    type: "POST",
+                    dataType: "json",
+                    success: function(response) {
+                        console.log(response);
+                    }
+                });
+            });
+            $('#but3').click(function(){
+                $('#but3').text("работает");
+                $.ajax({
+                    url: "/specialty",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        "id": 1,
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    }
+                });
+            });
+            $('#but4').click(function(){
+                $('#but4').text("работает");
+                $.ajax({
+                    url: "/specialties",
+                    type: "POST",
+                    dataType: "json",
+                    success: function(response) {
+                        console.log(response);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
